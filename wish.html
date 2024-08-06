@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add to Wishlist Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    #wishlist {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    #wishlist ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #wishlist li {
+      margin-bottom: 5px;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="wishlist">
+    <h2>Wishlist</h2>
+    <ul id="wishlist-items"></ul>
+  </div>
+
+  <div class="product">
+    <h3>Product 1</h3>
+    <p>Description of Product 1. Price: $20</p>
+    <button onclick="addToWishlist('Product 1')">Add to Wishlist</button>
+  </div>
+
+  <div class="product">
+    <h3>Product 2</h3>
+    <p>Description of Product 2. Price: $30</p>
+    <button onclick="addToWishlist('Product 2')">Add to Wishlist</button>
+  </div>
+
+  <script>
+    // Cart and wishlist arrays to store added items
+    const cart = [];
+    const wishlist = [];
+
+    // Function to add item to the wishlist
+    function addToWishlist(productName) {
+      const item = { productName };
+      wishlist.push(item);
+      updateWishlist();
+    }
+
+    // Function to update the wishlist display
+    function updateWishlist() {
+      const wishlistItems = document.getElementById('wishlist-items');
+      wishlistItems.innerHTML = '';
+
+      wishlist.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.productName;
+        wishlistItems.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>
